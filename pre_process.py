@@ -10,9 +10,9 @@ PATCH_HEIGHT = 32
 PATCH_WIDTH = 32
 PADDING_SHAPE = (436, 436)
 
-train_data_dir = '/data/jinquan/kidney/train_yuan/'
+train_data_dir = ''
 
-val_data_dir = '/data/jinquan/kidney/testnew_yuan/'
+val_data_dir = ''
 
 seq_length = 15
 extract_stride = 4

@@ -22,6 +22,8 @@ PATCH_WIDTH = 32
 PADDING_SHAPE = (436, 436)
 directions = [(0, 1), (-1, 2), (-1, 1), (-2, 1), (-1, 0), (-2, -1), (-1, -1), (-1, -2)]
 
+model_file = 'weights.pth'
+
 
 def integrate(result, counter_map, patches, coordinate, direction):
     """
@@ -83,9 +85,6 @@ def inference():
     """
     os.makedirs(test_params.output_dir + '/whole_seg', exist_ok=True)
     net = SkipConnecRNNModel(img_shape=(32, 32), num_class=2, batch_size=2)
-    # model_file = test_params.output_dir + 'snap/0' + str(test_params.checkpoint) + '.pth'
-    model_file = test_params.output_dir + 'snap/final.pth'
-    print(model_file)
     net.load_state_dict(torch.load(model_file))
     net.cuda()
     net.eval()
