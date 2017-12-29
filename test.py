@@ -100,9 +100,6 @@ def inference():
     names = [name.split('.')[0].split('/')[-1] for name in names]
     print(len(names))
 
-    dices = {}
-    cds = []
-
     # start predicting
     for name in names:
         print(name)
@@ -156,8 +153,6 @@ def inference():
        
         result_img = visulize_gt(result_img.astype(np.uint8), gt_img)
         imsave(test_params.output_dir + 'whole_seg/' + name + '_3.png', result_img.astype(np.uint8))
-
-    print(dices)
     
 
     
