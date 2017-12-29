@@ -20,7 +20,6 @@ from modules.Model import SkipConnecRNNModel
 from skimage.measure import regionprops, label
 from pre_process import set_patch
 from  utils.post_process import post_process
-from utils.statistic import dice_ratio, cd_xy
 from utils.visualize import visulize_gt
 
 HEIGHT = 296
@@ -154,31 +153,16 @@ def inference():
 
         result_img = post_process(result_img.astype(np.uint8))
         imsave(test_params.output_dir + 'whole_seg/' + name + '_2.png', result_img.astype(np.uint8))
-        cd = cd_xy(result_img.astype(np.uint8), gt_img)
-        cds.append(cd)
-
-        dices[name] = dice_ratio(result_img // 255, gt_img // 255)
-
+       
         result_img = visulize_gt(result_img.astype(np.uint8), gt_img)
         imsave(test_params.output_dir + 'whole_seg/' + name + '_3.png', result_img.astype(np.uint8))
 
     print(dices)
-    total = 0
-    tmp_dices = []
-    for key, value in dices.items():
-        print(key + ' ' + str(value))
-        total += value
-        tmp_dices.append(value)
-    print(total / len(dices))
+    
 
-    cds = np.asarray(cds)
-    print(cds)
-    print(np.mean(cds, axis=0))
-    print(np.var(cds, axis=0))
-    tmp_dices = np.asarray(tmp_dices)
-    print(np.mean(tmp_dices))
-    print(np.var(tmp_dices))
-
+    
+   
+    
 
 if __name__ == '__main__':
     inference()
