@@ -1,3 +1,9 @@
+"""
+This file is just an example to show
+how our method works. For convenience,
+we directly calculate the mass center of the
+object according to the ground truth as the initialize point.
+"""
 import torch
 import os
 import test_params
